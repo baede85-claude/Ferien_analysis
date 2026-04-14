@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbstferien-Vergleich 2025 – 3 Familien ab Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --cream: #f5f0e8;
+    --warm: #e8e0d0;
+    --gold: #c9a84c;
+    --gold-light: #e8cc7a;
+    --rust: #b85c38;
+    --sage: #5a7a5a;
+    --sky: #4a7a9b;
+    --mist: #8a9bb0;
+    --shadow: rgba(26,26,46,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--ink);
+    padding: 0;
+  }
+
+  .page-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ───── HEADER ───── */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .header-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.5vw, 44px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .header-sub { font-size: 13px; color: var(--mist); font-weight: 300; }
+
+  /* ───── LEGEND ───── */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-bottom: 24px; padding: 14px 18px;
+    background: white; border-radius: 8px; border: 1px solid var(--warm);
+  }
+  .legend-title { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); width: 100%; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .badge { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 3px; font-size: 11px; font-weight: 700; }
+  .badge-green { background: #d4edda; color: #2d6a3f; }
+  .badge-yellow { background: #fff3cd; color: #856404; }
+  .badge-red { background: #f8d7da; color: #721c24; }
+  .badge-blue { background: #d1ecf1; color: #0c5460; }
+
+  /* ───── TABLE ───── */
+  .table-scroll {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px var(--shadow);
+    margin-bottom: 36px;
+  }
+
+  table { width: 100%; border-collapse: collapse; min-width: 1150px; background: white; }
+
+  /* Group header */
+  thead tr.group-header th {
+    background: var(--ink); color: var(--gold);
+    font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.05em; padding: 10px 12px; text-align: center;
+    border-right: 2px solid rgba(255,255,255,0.1);
+  }
+  thead tr.group-header th.label-col {
+    color: rgba(255,255,255,0.35); font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+
+  /* Destination header */
+  thead tr.dest-header th {
+    background: #f8f5ef; padding: 10px 8px 10px;
+    border-bottom: 3px solid var(--warm); border-right: 1px solid var(--warm);
+    text-align: center; vertical-align: bottom;
+  }
+  thead tr.dest-header th.label-col { background: #f8f5ef; border-right: 2px solid var(--warm); }
+
+  .dest-name { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
+  .dest-flag { font-size: 15px; display: block; margin-bottom: 3px; }
+  .dest-drive { font-size: 9px; color: var(--mist); font-weight: 400; display: block; }
+  .top-pick-badge {
+    display: inline-block; background: var(--gold); color: var(--ink);
+    font-size: 7px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 2px 5px; border-radius: 3px; margin-bottom: 3px;
+  }
+  .new-badge {
+    display: inline-block; background: var(--sky); color: white;
+    font-size: 7px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 2px 5px; border-radius: 3px; margin-bottom: 3px;
+  }
+
+  /* Body */
+  tbody tr { border-bottom: 1px solid var(--warm); transition: background 0.12s; }
+  tbody tr:hover { background: #faf8f3; }
+  tbody tr.section-start td, tbody tr.section-start th { border-top: 2px solid var(--warm); }
+
+  td, th { padding: 9px 10px; vertical-align: middle; border-right: 1px solid var(--warm); font-size: 12px; }
+
+  th.row-label {
+    background: #faf8f3; border-right: 2px solid var(--warm);
+    font-weight: 600; font-size: 11px; color: var(--ink);
+    text-align: left; white-space: nowrap; min-width: 140px;
+  }
+  th.row-label .sublabel { font-weight: 300; color: var(--mist); font-size: 10px; display: block; }
+  td.cell { text-align: center; }
+
+  /* Score row */
+  tr.score-row td {
+    background: var(--ink); color: white;
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    font-size: 20px; text-align: center; padding: 13px 8px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  tr.score-row th.row-label {
+    background: var(--ink); color: var(--gold); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; border-right: 2px solid rgba(255,255,255,0.15);
+  }
+  .score-10 { color: #7eff9a; }
+  .score-high { color: var(--gold-light); }
+  .score-mid { color: #aac4db; }
+  .score-low { color: #e09090; }
+
+  /* Price row */
+  tr.price-row td { font-weight: 600; font-size: 11px; color: var(--sage); text-align: center; }
+  tr.price-row th.row-label { color: var(--sage); }
+
+  /* Cell badges */
+  .cb {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 4px; padding: 2px 6px; font-size: 10px; font-weight: 600;
+    white-space: nowrap; line-height: 1.4;
+  }
+  .cb-green { background: #d4edda; color: #2d6a3f; }
+  .cb-yellow { background: #fff3cd; color: #856404; }
+  .cb-red { background: #f8d7da; color: #721c24; }
+  .cb-blue { background: #d1ecf1; color: #0c5460; }
+  .cb-gray { background: #e9ecef; color: #495057; }
+
+  td.hl { background: #fffbf0; }
+  th.hl { background: #fffef5; }
+
+  /* Risk cells */
+  td.risk-cell { text-align: left; font-size: 10px; line-height: 1.4; color: #555; }
+
+  /* ───── SUMMARY ───── */
+  .summary-section {
+    background: white; border-radius: 12px; border: 1px solid var(--warm);
+    overflow: hidden; margin-bottom: 28px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .summary-header {
+    background: var(--ink); padding: 16px 26px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .summary-header h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 21px; font-weight: 700; }
+  .summary-header span { font-size: 11px; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .summary-body {
+    padding: 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  @media (max-width: 700px) { .summary-body { grid-template-columns: 1fr; } }
+
+  .choice-card {
+    border-radius: 8px; padding: 16px 18px;
+    border-left: 4px solid var(--gold); background: var(--cream);
+  }
+  .c-verzasca { border-left-color: var(--sage); background: #f0f5f0; }
+  .c-finale   { border-left-color: var(--sky);  background: #f0f5f8; }
+  .c-toscana  { border-left-color: var(--rust); background: #f8f2ef; }
+  .c-sardinia { border-left-color: #9b6fcf;     background: #f5f0fa; }
+  .c-piemont  { border-left-color: #c9a84c;     background: #fdf9ef; }
+  .c-matterhorn { border-left-color: var(--mist); background: #f3f5f7; }
+
+  .choice-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); margin-bottom: 5px; }
+  .choice-dest { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 5px; }
+  .choice-desc { font-size: 12px; color: #555; line-height: 1.5; }
+
+  .question-block {
+    grid-column: 1 / -1; background: var(--ink); border-radius: 8px;
+    padding: 18px 22px; color: white;
+  }
+  .question-block h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 15px; margin-bottom: 7px; }
+  .question-block p { font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  .footer-note {
+    text-align: center; font-size: 10px; color: var(--mist);
+    padding-top: 14px; border-top: 1px solid var(--warm); font-style: italic;
+  }
+
+  /* ──── FLIGHT NOTE ──── */
+  .flight-note {
+    background: #fff8e7;
+    border: 1px solid #e8cc7a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 11px;
+    color: #7a5c00;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .flight-note strong { color: #5a3e00; }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(26,26,46,0.95);backdrop-filter:blur(8px);padding:12px 40px;display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,0.07);">
+  <a href="/" style="font-family:serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#c8a96e;text-decoration:none;">← Ferien Analyse</a>
+  <span style="color:rgba(255,255,255,0.15);font-size:11px;">/</span>
+  <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,236,228,0.45);">Herbstferien 2025</span>
+</div>
+<div style="height:48px;"></div>
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Skeptical Travel Strategist · Reisevergleich 2025</div>
+    <h1>Herbstferien-Vergleich 2025</h1>
+    <p class="header-sub">3.–10. Oktober &nbsp;·&nbsp; 3 Familien &nbsp;·&nbsp; ~15 Personen (9 Erw. + 6 Kinder, 3–11 J.) &nbsp;·&nbsp; ab Zürich ZRH &nbsp;·&nbsp; Budget CHF 5.000–8.000</p>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-title">Legende / Zeichenerklärung</div>
+    <div class="legend-item"><span class="badge badge-green">✓✓</span> Ausgezeichnet</div>
+    <div class="legend-item"><span class="badge badge-green">✓</span> Gut</div>
+    <div class="legend-item"><span class="badge badge-yellow">⚠</span> Eingeschränkt / Bitte prüfen</div>
+    <div class="legend-item"><span class="badge badge-red">✗</span> Schwach / Risiko</div>
+    <div class="legend-item"><span class="badge badge-blue">i</span> Hinweis / Information</div>
+  </div>
+
+  <!-- FLIGHT NOTE -->
+  <div class="flight-note">
+    ✈️ <strong>Flughinweis (Sardinien &amp; Toskana):</strong>
+    Beide Destinationen erfordern einen Flug + Mietwagen. Sardinien: EasyJet/Ryanair ZRH→Olbia oder ZRH→Cagliari, ca. 2h Flug, ca. CHF 80–180/Person Oktober (Nebensaison). Toskana: Flug ZRH→Florenz (FLR) oder Pisa (PSA), ca. 1h, ca. CHF 60–140/Person. Mietwagen vor Ort zwingend. Die Gesamtpreisangaben für diese Ziele beinhalten Flüge + Mietwagen (2–3 Autos).
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <!-- GROUP ROW -->
+        <tr class="group-header">
+          <th class="label-col">Kriterien</th>
+          <!-- Swiss -->
+          <th colspan="3" style="border-right:2px solid rgba(255,255,255,0.2);">🇨🇭 Schweiz — Berge &amp; Natur</th>
+          <!-- Swiss Icons -->
+          <th colspan="1" style="border-right:2px solid rgba(255,255,255,0.2);">🇨🇭 Alpen-Ikone</th>
+          <!-- Italy -->
+          <th colspan="5">🇮🇹 Italien — Mittelmeer &amp; Kultur</th>
+        </tr>
+
+        <!-- DESTINATION ROW -->
+        <tr class="dest-header">
+          <th class="label-col"></th>
+
+          <!-- Verzasca -->
+          <th class="hl">
+            <span class="top-pick-badge">Top-Wahl 🥇</span>
+            <span class="dest-flag">🏞️</span>
+            <span class="dest-name">Verzasca</span>
+            <span class="dest-drive">Ticino · 1,5 Std.</span>
+          </th>
+
+          <!-- Saas-Fee -->
+          <th>
+            <span class="dest-flag">🏔️</span>
+            <span class="dest-name">Saas-Fee</span>
+            <span class="dest-drive">Wallis · 2,5 Std.</span>
+          </th>
+
+          <!-- Interlaken -->
+          <th style="border-right:2px solid var(--warm);">
+            <span class="dest-flag">🗻</span>
+            <span class="dest-name">Interlaken</span>
+            <span class="dest-drive">Berner Obl. · 2 Std.</span>
+          </th>
+
+          <!-- Zermatt -->
+          <th style="border-right:2px solid var(--warm);">
+            <span class="dest-flag">⛰️</span>
+            <span class="dest-name">Zermatt</span>
+            <span class="dest-drive">Wallis · 3,5 Std.*</span>
+          </th>
+
+          <!-- Finale Ligure -->
+          <th class="hl">
+            <span class="top-pick-badge">Dark Horse 🥈</span>
+            <span class="dest-flag">🏖️</span>
+            <span class="dest-name">Finale Ligure</span>
+            <span class="dest-drive">Ligurien · 3 Std.</span>
+          </th>
+
+          <!-- Lago Maggiore -->
+          <th>
+            <span class="dest-flag">🍷</span>
+            <span class="dest-name">Lago Maggiore</span>
+            <span class="dest-drive">Norditalien · 2 Std.</span>
+          </th>
+
+          <!-- Piemont -->
+          <th>
+            <span class="dest-flag">🍇</span>
+            <span class="dest-name">Piemont</span>
+            <span class="dest-drive">Langhe · 2,5 Std.</span>
+          </th>
+
+          <!-- Sardinia -->
+          <th>
+            <span class="new-badge">Neu ✦</span>
+            <span class="dest-flag">🏝️</span>
+            <span class="dest-name">Sardinien</span>
+            <span class="dest-drive">Flug ~2 Std.</span>
+          </th>
+
+          <!-- Tuscany -->
+          <th>
+            <span class="new-badge">Neu ✦</span>
+            <span class="dest-flag">🌻</span>
+            <span class="dest-name">Toskana</span>
+            <span class="dest-drive">Flug ~1 Std.</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- BUDGET -->
+        <tr class="section-start">
+          <th class="row-label">Budget-Eignung<span class="sublabel">CHF 5k–8k gesamt</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Bestes</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Budgetfalle</span></td>
+          <td class="cell"><span class="cb cb-red">✗ Teuerste</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Günstigste</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+        </tr>
+
+        <!-- PRICE -->
+        <tr class="price-row">
+          <th class="row-label">Geschätzter Preis<span class="sublabel">~15 Pers., 7 Nächte, gesamt</span></th>
+          <td class="cell hl"><strong>CHF 4.800–5.900</strong></td>
+          <td class="cell"><strong>CHF 5.600–7.100</strong></td>
+          <td class="cell"><strong>CHF 5.500–8.000</strong></td>
+          <td class="cell"><strong>CHF 6.500–9.000</strong></td>
+          <td class="cell hl"><strong>CHF 4.600–5.700</strong></td>
+          <td class="cell"><strong>CHF 6.500–8.000</strong></td>
+          <td class="cell"><strong>CHF 5.550–7.050</strong></td>
+          <td class="cell"><strong>CHF 6.000–8.500</strong><br><span style="font-size:9px;color:var(--mist);">inkl. Flug+Auto</span></td>
+          <td class="cell"><strong>CHF 5.500–7.500</strong><br><span style="font-size:9px;color:var(--mist);">inkl. Flug+Auto</span></td>
+        </tr>
+
+        <!-- ONE ROOF -->
+        <tr>
+          <th class="row-label">Unter einem Dach<span class="sublabel">15 Pers. gemeinsam</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Feriendorf</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Schwierig</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Schwierig</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Schwierig</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ Villa möglich</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Villa 15–18</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Agriturismo</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Gruppenvillen</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Borgo / Villa</span></td>
+        </tr>
+
+        <!-- HIKING -->
+        <tr>
+          <th class="row-label">Wandern<span class="sublabel">Familie &amp; Kinder</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Exzellent</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Exzellent</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 5-Seen-Weg</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ Küstentrails</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Sanft</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Supramonte</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Weinberg-Trails</span></td>
+        </tr>
+
+        <!-- BIKING -->
+        <tr>
+          <th class="row-label">Velofahren / MTB<span class="sublabel">Erwachsene</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Exzellent</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Weltklasse</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Seilbahn-Risiko</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Hügeltouren</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Supramonte MTB</span></td>
+          <td class="cell"><span class="cb cb-green">✓ E-Bike Chianti</span></td>
+        </tr>
+
+        <!-- OUTDOOR VARIETY -->
+        <tr>
+          <th class="row-label">Outdoor-Vielfalt<span class="sublabel">Gesamt-Angebot</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Sehr gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Sehr gut</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Breiteste</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Sanfter Sport</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Klettern+Meer</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Kulturell stark</span></td>
+        </tr>
+
+        <!-- KIDS 3-11 -->
+        <tr>
+          <th class="row-label">Kinder (3–11 J.)<span class="sublabel">Altersgerecht</span></th>
+          <td class="cell hl"><span class="cb cb-yellow">⚠ Treppen!</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Top</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Wolli-Trail</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Strand+Trails</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ See+Kultur</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Tiere+Farm</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Strand+Abenteuer</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Farm+Kochen</span></td>
+        </tr>
+
+        <!-- OCTOBER WEATHER -->
+        <tr>
+          <th class="row-label">Oktober-Wetter<span class="sublabel">Klima-Eignung</span></th>
+          <td class="cell hl"><span class="cb cb-blue">🍂 Mild 14–18°C</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Kalt/Schnee</span></td>
+          <td class="cell"><span class="cb cb-blue">🍂 Kühl</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Kalt 1620m</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Wärmste ~19°C</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Mild</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Herbst/Ernte</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 20–25°C</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ ~18°C angenehm</span></td>
+        </tr>
+
+        <!-- TRAVEL / FLIGHTS -->
+        <tr>
+          <th class="row-label">Anreise ab ZRH<span class="sublabel">Fahrzeit / Flug</span></th>
+          <td class="cell hl"><span class="cb cb-green">Auto 1,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-yellow">Auto 2,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-blue">Auto 2 Std.</span></td>
+          <td class="cell"><span class="cb cb-red">Auto 3,5 Std.*</span></td>
+          <td class="cell hl"><span class="cb cb-yellow">Auto 3 Std.</span></td>
+          <td class="cell"><span class="cb cb-blue">Auto 2 Std.</span></td>
+          <td class="cell"><span class="cb cb-yellow">Auto 2,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-yellow">✈ ~2h + Auto</span></td>
+          <td class="cell"><span class="cb cb-green">✈ ~1h + Auto</span></td>
+        </tr>
+
+        <!-- CULTURE -->
+        <tr>
+          <th class="row-label">Kultur &amp; Flair<span class="sublabel">Einzigartigkeit</span></th>
+          <td class="cell hl"><span class="cb cb-blue">🇨🇭 Tessin rustikal</span></td>
+          <td class="cell"><span class="cb cb-blue">🇨🇭 Alpin</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Touristisch</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Matterhorn!</span></td>
+          <td class="cell hl"><span class="cb cb-green">🇮🇹 Mittelmeer</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 🇮🇹 Belle Époque</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 🇮🇹 Kulinarik</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 🇮🇹 Urwild+Meer</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 🇮🇹 Renais. Toskana</span></td>
+        </tr>
+
+        <!-- WOW -->
+        <tr>
+          <th class="row-label">Wow-Faktor<span class="sublabel">Unvergesslichkeit</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ Smaragd-Schluchten</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gletscher</span></td>
+          <td class="cell"><span class="cb cb-blue">Jungfrau-Region</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Matterhorn!</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ MTB+Strand</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Villen+See</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Trüffelmesse!</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Türkisblaues Meer</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Zypressenalleen</span></td>
+        </tr>
+
+        <!-- POOL SEASON -->
+        <tr>
+          <th class="row-label">Pool / Strand Oktober<span class="sublabel">Schwimmbar?</span></th>
+          <td class="cell hl"><span class="cb cb-blue">i Fluss-Pools</span></td>
+          <td class="cell"><span class="cb cb-gray">— Kein Pool</span></td>
+          <td class="cell"><span class="cb cb-gray">— Kein Pool</span></td>
+          <td class="cell"><span class="cb cb-gray">— Kein Pool</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ 21°C See</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Pool Sept. zu</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Pool Sept. zu</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 22°C Meer!</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Pool bis 25. Okt</span></td>
+        </tr>
+
+        <!-- BOOKING RISK -->
+        <tr>
+          <th class="row-label">Buchungsrisiko<span class="sublabel">Oktober-Verfügbarkeit</span></th>
+          <td class="cell hl"><span class="cb cb-red">⚠ Letzte Saison!</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Günstige Saison</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut verfügbar</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Zwischensaison</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ Nebensaison</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Pool ggf. zu</span></td>
+          <td class="cell"><span class="cb cb-red">⚠ Trüffelzeit voll!</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Nebensaison -50%</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Nebensaison</span></td>
+        </tr>
+
+        <!-- MAIN RISK -->
+        <tr>
+          <th class="row-label">Haupt-Risiko<span class="sublabel">Deal-Breaker</span></th>
+          <td class="cell risk-cell hl">Treppen für Kleinkind; Rustici endet Okt. → sofort buchen!</td>
+          <td class="cell risk-cell">1 Dach für 15 schwierig; Kälte/Schnee möglich</td>
+          <td class="cell risk-cell">Budgetfalle Jungfraujoch; teure Restaurants</td>
+          <td class="cell risk-cell">Teuerste Option; Seilbahn-Schliessungen; Anreise komplex</td>
+          <td class="cell risk-cell hl">Oktober = regenreichster Monat; MTB-Kosten einplanen</td>
+          <td class="cell risk-cell">Seilbahn Mottarone defekt; Pool oft Ende Sept.</td>
+          <td class="cell risk-cell">Kein Hochsport; Trüffelmesse = früh buchen!</td>
+          <td class="cell risk-cell">Flug + Auto + Insel-Logistik; Mietwagen Pflicht; Budget-Unsicherheit</td>
+          <td class="cell risk-cell">Flug + Auto; Pools oft bis 15. Okt; Florenz/Siena Ausflüge teuer</td>
+        </tr>
+
+        <!-- SCORE -->
+        <tr class="score-row">
+          <th class="row-label">Gesamtwertung<span style="color:rgba(255,255,255,0.38);font-size:9px;font-weight:300;display:block;letter-spacing:0.05em;">Punkte von 10</span></th>
+          <td class="hl"><span class="score-10">9.0</span></td>
+          <td><span class="score-high">7.5</span></td>
+          <td><span class="score-mid">6.0</span></td>
+          <td><span class="score-high">7.5</span></td>
+          <td class="hl"><span class="score-high">8.5</span></td>
+          <td><span class="score-high">8.0</span></td>
+          <td><span class="score-high">7.5</span></td>
+          <td><span class="score-high">8.0</span></td>
+          <td><span class="score-high">7.5</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTNOTE -->
+  <p style="font-size:10px;color:var(--mist);margin-bottom:28px;font-style:italic;line-height:1.6;">
+    * Zermatt: Auto bis Täsch (~3 Std.), dann 12 Min. Pendelzug – kein Auto im Dorf erlaubt.
+    &nbsp;|&nbsp; Sardinien &amp; Toskana: Preise inkl. Flug (Nebensaison ZRH, ca. CHF 80–180/Person) + Mietwagen (2–3 Autos, 7 Tage, ca. CHF 400–600 total).
+    &nbsp;|&nbsp; Alle Beträge: Schätzwerte für ~15 Personen inkl. Unterkunft, Aktivitäten, Verpflegung &amp; Anreise.
+  </p>
+
+  <!-- ───── SUMMARY ───── -->
+  <div class="summary-section">
+    <div class="summary-header">
+      <h2>Fazit &amp; Empfehlungen</h2>
+      <span>Die entscheidende Frage für 3 Familien</span>
+    </div>
+    <div class="summary-body">
+
+      <div class="question-block">
+        <h3>Wofür soll der Urlaub eigentlich stehen?</h3>
+        <p>
+          Neun Destinationen, und jede gewinnt in einer anderen Kategorie.
+          Die ehrliche Antwort: <strong>Es hängt davon ab, ob ihr ein Outdoor-Erlebnis, ein Meer-Erlebnis, einen Kultur- und Genuss-Urlaub oder das pure „Wow-Bild" sucht.</strong>
+          Besprecht das als Gruppe — ein kurzes Vorab-Voting unter den 3 Familien spart Wochen an Diskussion.
+        </p>
+      </div>
+
+      <div class="choice-card c-verzasca">
+        <div class="choice-tag">🏆 Bestes Preis-Leistungs-Verhältnis — kein Flug nötig</div>
+        <div class="choice-dest">Verzasca Valley, Ticino</div>
+        <div class="choice-desc">
+          Günstigste Gesamtlösung (CHF 4.800–5.900), echtes Feriendorf-Konzept, Outdoor direkt vor der Tür, 1,5 Std. ab Zürich. Ideal wenn Budget-Sicherheit und die Gemeinschaft unter einem Dach erste Priorität haben.
+          <br><strong>➜ Jetzt anrufen: +41 91 745 16 84</strong>
+        </div>
+      </div>
+
+      <div class="choice-card c-finale">
+        <div class="choice-tag">🏖️ Dark Horse — Grösste Aktivitätsvielfalt + günstig</div>
+        <div class="choice-dest">Finale Ligure, Ligurien</div>
+        <div class="choice-desc">
+          Weltklasse-MTB, Klettern, Wandern und ~21°C Meerestemperatur Anfang Oktober — alles in einer Destination. Günstigste Unterkunft aller Optionen (CHF 4.600–5.700). Nur Risiko: Oktober ist statistisch regenreicher.
+        </div>
+      </div>
+
+      <div class="choice-card c-sardinia">
+        <div class="choice-tag">🏝️ Neu — Bestes Meer-Erlebnis im Oktober</div>
+        <div class="choice-dest">Sardinien — Golfo di Orosei / Nordsardinien</div>
+        <div class="choice-desc">
+          September bis Oktober ist die ideale Zeit für Sardinien — Wetter warm, Strände leer, Preise bis zu 50% günstiger als im Hochsommer.
+          Türkisblaues Meer (~22°C), Wandern im Supramonte, Klettern und authentisches Insel-Leben. Gruppenvillen für 14–15 Personen direkt buchbar.
+          Einziger Haken: Flug + Mietwagen nötig.
+        </div>
+      </div>
+
+      <div class="choice-card c-toscana">
+        <div class="choice-tag">🌻 Neu — Reichstes Kulturerlebnis, ideales Agriturismo</div>
+        <div class="choice-dest">Toskana — Chianti / Val d'Orcia</div>
+        <div class="choice-desc">
+          Oktober = Olivenernte, Weinlese, Trüffelzeit. Agriturismo-Borgi schlafen 15–30 Personen unter einem Dach. E-Bike-Touren durch Weinberge, Kochen für Kinder, Siena und Florenz als Tagesausflug. Stimmungsmässig Sardinien ebenbürtig — aber für Familien, die Genuss über Sport stellen.
+        </div>
+      </div>
+
+      <div class="choice-card c-matterhorn">
+        <div class="choice-tag">⛰️ Ikonischer Matterhorn-Anblick — Premium-Option</div>
+        <div class="choice-dest">Zermatt, Wallis</div>
+        <div class="choice-desc">
+          Das Matterhorn bleibt der stärkste Wow-Faktor für Kinder. Wolli-Trail und Riffelsee-Wanderung offen Anfang Oktober.
+          Teuerste Option (CHF 6.500–9.000), autofreie Logistik via Täsch, und manche Seilbahnen schliessen Mitte Oktober. Nur richtig, wenn das Matterhorn das erklärte Ziel ist.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    Alle Preisangaben: Schätzwerte Herbst 2025, basierend auf Airbnb, VRBO, Interhome, Reka und Direkt-Anbietern.
+    Flugpreise: EasyJet / Ryanair ZRH Nebensaison Oktober. Kurs- und Preisabweichungen vorbehalten. Stand: April 2026. | Erstellt mit dem Skeptical Travel Strategist.
+  </div>
+
+</div>
+</body>
+</html>
