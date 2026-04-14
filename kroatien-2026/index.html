@@ -1,0 +1,400 @@
+<\!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kroatien Kvarner 2026 – Strandurlaub ab Zürich · Hochzeit Zagreb</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+  --night: #0d0f14; --deep: #13161e; --card: #181c27;
+  --border: rgba(255,255,255,0.07); --gold: #c8a96e;
+  --gold-dim: rgba(200,169,110,0.15); --white: #f0ece4;
+  --muted: rgba(240,236,228,0.45); --accent: #7eb8c9;
+  --sage: #5a9a6a; --sky: #4a7a9b; --rust: #b85c38;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--night); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.5; }
+.ambient { position: fixed; border-radius: 50%; filter: blur(130px); pointer-events: none; z-index: 0; }
+.ambient-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%); top: -200px; right: -100px; animation: drift1 20s ease-in-out infinite; }
+.ambient-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(126,184,201,0.05) 0%, transparent 70%); bottom: 20%; left: -100px; animation: drift2 24s ease-in-out infinite; }
+@keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,50px)} }
+@keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-30px)} }
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; background: rgba(13,15,20,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 52px; height: 52px; }
+.nav-back { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gold); letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; padding-right: 20px; }
+.nav-back:hover { opacity: 0.7; }
+.nav-back::before { content: '←'; font-size: 15px; }
+.nav-sep { color: var(--border); font-size: 18px; margin-right: 20px; }
+.nav-current { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.page-header { position: relative; z-index: 1; padding: 60px 52px 48px 80px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+.header-left { max-width: 620px; }
+.page-eyebrow { font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 0.7s 0.1s forwards; }
+.page-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); opacity: 0.6; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 60px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+.page-title em { font-style: italic; color: var(--gold); }
+.page-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 12px; color: var(--muted); letter-spacing: 0.06em; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; }
+.page-meta span { display: flex; align-items: center; gap: 6px; }
+.header-score { flex-shrink: 0; text-align: center; opacity: 0; animation: fadeIn 0.9s 0.5s forwards; }
+.score-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.score-big { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; line-height: 1; color: var(--gold); }
+.score-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.12em; }
+.context-bar { position: relative; z-index: 1; padding: 14px 80px; background: rgba(126,184,201,0.04); border-bottom: 1px solid rgba(126,184,201,0.12); font-size: 11px; color: rgba(126,184,201,0.85); line-height: 1.6; }
+.context-bar strong { color: var(--accent); }
+.route-section { position: relative; z-index: 1; margin: 32px 80px 0; display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.route-step { background: var(--card); padding: 20px 22px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid var(--border); }
+.route-step:last-child { border-right: none; }
+.route-step.highlight { background: rgba(200,169,110,0.03); border-left: 2px solid rgba(200,169,110,0.2); border-right: 2px solid rgba(200,169,110,0.2); }
+.route-num { font-size: 9px; color: rgba(200,169,110,0.5); letter-spacing: 0.2em; text-transform: uppercase; }
+.route-place { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--white); margin: 3px 0; }
+.route-detail { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.table-section { position: relative; z-index: 1; padding: 48px 80px 60px; }
+.table-section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+.ts-label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+.ts-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: var(--white); }
+.table-scroll { overflow-x: auto; border-radius: 6px; border: 1px solid var(--border); box-shadow: 0 4px 32px rgba(0,0,0,0.4); margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; min-width: 1020px; background: var(--card); }
+thead tr.group-header th { background: #0a0c10; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 12px; font-weight: 400; letter-spacing: 0.08em; padding: 10px 12px; text-align: center; border-right: 2px solid rgba(255,255,255,0.05); }
+thead tr.group-header th.label-col { color: rgba(255,255,255,0.2); font-family: 'DM Sans', sans-serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; }
+thead tr.dest-header th { background: #10131a; padding: 12px 10px 10px; border-bottom: 2px solid rgba(200,169,110,0.15); border-right: 1px solid var(--border); text-align: center; vertical-align: bottom; }
+thead tr.dest-header th.label-col { background: #10131a; border-right: 2px solid rgba(255,255,255,0.1); }
+.dest-name { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 400; color: var(--white); display: block; margin-bottom: 2px; }
+.dest-flag { font-size: 15px; display: block; margin-bottom: 3px; }
+.dest-drive { font-size: 9px; color: var(--muted); display: block; }
+.top-pick-badge { display: inline-block; background: var(--gold-dim); color: var(--gold); font-size: 7px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; margin-bottom: 3px; }
+.new-badge { display: inline-block; background: rgba(74,122,155,0.15); color: #7eb8c9; font-size: 7px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; margin-bottom: 3px; }
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+tbody tr:hover { background: #1a1f2e; }
+tbody tr.section-start td, tbody tr.section-start th { border-top: 2px solid rgba(200,169,110,0.12); }
+td, th { padding: 9px 10px; vertical-align: middle; border-right: 1px solid var(--border); font-size: 11.5px; }
+th.row-label { background: #10131a; border-right: 2px solid rgba(255,255,255,0.08); font-weight: 500; font-size: 11px; color: var(--muted); text-align: left; white-space: nowrap; min-width: 148px; }
+th.row-label .sub { font-weight: 300; color: rgba(240,236,228,0.25); font-size: 9.5px; display: block; margin-top: 1px; }
+td.cell { text-align: center; }
+td.hl { background: rgba(200,169,110,0.04); }
+th.hl { background: rgba(200,169,110,0.03); }
+tr.score-row td { background: #0a0c10; color: white; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px; text-align: center; padding: 14px 8px; border-right: 1px solid rgba(255,255,255,0.05); }
+tr.score-row th.row-label { background: #0a0c10; color: var(--gold); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-right: 2px solid rgba(255,255,255,0.08); }
+.score-10 { color: #7aefaa; } .score-high { color: var(--gold); } .score-mid { color: #7eb8c9; } .score-low { color: #e09090; }
+tr.price-row td { font-weight: 500; font-size: 11px; color: #6ab87a; text-align: center; }
+tr.price-row th.row-label { color: #6ab87a; }
+.price-sub { font-size: 9px; color: var(--muted); display: block; font-weight: 300; }
+.cb { display: inline-flex; align-items: center; justify-content: center; border-radius: 3px; padding: 2px 7px; font-size: 10px; font-weight: 500; white-space: nowrap; line-height: 1.5; }
+.cb-green  { background: rgba(90,154,106,0.18); color: #7aefaa; border: 1px solid rgba(90,154,106,0.25); }
+.cb-yellow { background: rgba(200,169,110,0.12); color: #d4a84e; border: 1px solid rgba(200,169,110,0.2); }
+.cb-red    { background: rgba(184,92,56,0.15);  color: #e8927a; border: 1px solid rgba(184,92,56,0.25); }
+.cb-blue   { background: rgba(74,122,155,0.15); color: #7eb8c9; border: 1px solid rgba(74,122,155,0.2); }
+.cb-gray   { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+td.risk-cell { text-align: left; font-size: 10px; line-height: 1.5; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; padding: 12px 16px; background: var(--deep); border: 1px solid var(--border); border-radius: 4px; font-size: 11px; color: var(--muted); }
+.legend-title { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(200,169,110,0.5); width: 100%; }
+.legend-item { display: flex; align-items: center; gap: 7px; }
+.summary-section { position: relative; z-index: 1; margin: 0 80px 60px; background: var(--deep); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.summary-header { background: #0a0c10; padding: 18px 28px; display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--border); }
+.summary-header h2 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 22px; font-weight: 300; }
+.summary-header span { font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; }
+.summary-body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:700px){.summary-body{grid-template-columns:1fr}}
+.choice-card { border-radius: 4px; padding: 18px 20px; border-left: 3px solid var(--gold); background: rgba(255,255,255,0.02); }
+.c-crikvenica { border-color: #5a9a6a; } .c-baska { border-color: var(--gold); } .c-novivinodolski { border-color: #7a9b6a; } .c-opatija { border-color: #9b8a6a; }
+.choice-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.choice-dest { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+.choice-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.question-block { grid-column: 1 / -1; background: #0a0c10; border-radius: 4px; padding: 20px 22px; border: 1px solid var(--border); }
+.question-block h3 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 16px; margin-bottom: 8px; }
+.question-block p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+footer { position: relative; z-index: 1; padding: 32px 80px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; }
+.footer-note { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; font-style: italic; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@media(max-width:768px){
+  .page-header{flex-direction:column;padding:60px 24px 32px;gap:20px}
+  .table-section{padding:32px 16px 40px}
+  .context-bar{padding:12px 24px}
+  .route-section{grid-template-columns:1fr;margin:16px 16px 0}
+  .summary-section{margin:0 16px 40px}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px}
+  nav{padding:0 24px}
+}
+</style>
+</head>
+<body>
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+
+<nav>
+  <a href="/" class="nav-back">Ferien Analyse</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">Kroatien Kvarner 2026</span>
+</nav>
+
+<div class="page-header">
+  <div class="header-left">
+    <div class="page-eyebrow">Skeptical Travel Strategist · Reisevergleich 2026</div>
+    <h1 class="page-title">Kroatien —<br>Kvarner Küste <em>2026</em></h1>
+    <div class="page-meta">
+      <span>🗓️ 31. Juli – 7. Aug 2026</span>
+      <span>👨‍👩‍👧‍👧 2 Erwachsene · 2 Kinder (5 &amp; 7 J.)</span>
+      <span>💰 Budget &lt; CHF 5.000</span>
+      <span>🚗 ab Zürich · Eigenanreise</span>
+      <span>💍 Hochzeit Zagreb 8. Aug</span>
+      <span>🌍 6 Destinationen</span>
+    </div>
+  </div>
+  <div class="header-score">
+    <div class="score-label">Top-Wertung</div>
+    <div class="score-big">8.5</div>
+    <div class="score-sub">Crikvenica / Selce</div>
+  </div>
+</div>
+
+<div class="context-bar">
+  🗺️ <strong>Reise-Kontext:</strong> Die Familie reist am 31. Juli mit dem Auto von Zürich ab (~6,5 Std. via Ljubljana–Rijeka). Der Strandurlaub dauert 7 Nächte an der kroatischen Kvarner-Küste. Am 7. August (~1,5–2 Std. Fahrt) geht es weiter nach Zagreb zum Hotel Esplanade für die <strong>Hochzeit am 8. August</strong>. Alle Destinationen liegen maximal 2 Stunden von Zagreb entfernt.
+</div>
+
+<div class="route-section">
+  <div class="route-step">
+    <div class="route-num">Etappe 1 — 31. Juli</div>
+    <div class="route-place">Zürich → Kvarner</div>
+    <div class="route-detail">~650 km · 6,5–7 Std.<br>Via Salzburg – Ljubljana – Rijeka<br>Ankunft nachmittags</div>
+  </div>
+  <div class="route-step highlight">
+    <div class="route-num">Etappe 2 — 1.–7. Aug · 7 Nächte</div>
+    <div class="route-place">Strandurlaub Kvarner</div>
+    <div class="route-detail">Strand · Meer · Erholung<br>Destination gemäss Analyse<br>Wassertemp. ~25°C im August</div>
+  </div>
+  <div class="route-step">
+    <div class="route-num">Etappe 3 — 7. August</div>
+    <div class="route-place">Kvarner → Zagreb</div>
+    <div class="route-detail">~100–130 km · 1h 20–2h 00<br>Hotel Esplanade Zagreb<br>💍 Hochzeit 8. August</div>
+  </div>
+</div>
+
+<div class="table-section" style="padding-top:40px;">
+  <div class="table-section-header">
+    <span class="ts-label">Vergleich —</span>
+    <span class="ts-title">6 Destinationen · 13 Kriterien</span>
+  </div>
+
+  <div class="legend">
+    <div class="legend-title">Legende</div>
+    <div class="legend-item"><span class="cb cb-green">✓✓</span> Ausgezeichnet</div>
+    <div class="legend-item"><span class="cb cb-green">✓</span> Gut</div>
+    <div class="legend-item"><span class="cb cb-yellow">⚠</span> Eingeschränkt</div>
+    <div class="legend-item"><span class="cb cb-red">✗</span> Risiko / Nachteil</div>
+    <div class="legend-item"><span class="cb cb-blue">i</span> Hinweis</div>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr class="group-header">
+          <th class="label-col">Kriterien</th>
+          <th colspan="3" style="border-right:2px solid rgba(255,255,255,0.08);">🇭🇷 Festland-Küste — Kvarner Bay</th>
+          <th colspan="2" style="border-right:2px solid rgba(255,255,255,0.08);">🏝️ Insel Krk</th>
+          <th colspan="1">🌹 Kvarner Riviera</th>
+        </tr>
+        <tr class="dest-header">
+          <th class="label-col"></th>
+          <th class="hl">
+            <span class="top-pick-badge">Top-Wahl 🥇</span>
+            <span class="dest-flag">🏖️</span>
+            <span class="dest-name">Crikvenica</span>
+            <span class="dest-drive">100 km · 1h 40 ab ZG</span>
+          </th>
+          <th class="hl">
+            <span class="top-pick-badge">Empfehlung 🥈</span>
+            <span class="dest-flag">🌊</span>
+            <span class="dest-name">Selce</span>
+            <span class="dest-drive">100 km · 1h 40 ab ZG</span>
+          </th>
+          <th style="border-right:2px solid rgba(255,255,255,0.08);">
+            <span class="dest-flag">🏘️</span>
+            <span class="dest-name">Novi Vinodolski</span>
+            <span class="dest-drive">90 km · 1h 35 ab ZG</span>
+          </th>
+          <th>
+            <span class="dest-flag">⛵</span>
+            <span class="dest-name">Krk — Šilo</span>
+            <span class="dest-drive">85 km · 1h 20 ab ZG</span>
+          </th>
+          <th style="border-right:2px solid rgba(255,255,255,0.08);">
+            <span class="new-badge">Bester Strand ✦</span>
+            <span class="dest-flag">🏝️</span>
+            <span class="dest-name">Krk — Baška</span>
+            <span class="dest-drive">125 km · 2h 00 ab ZG</span>
+          </th>
+          <th>
+            <span class="dest-flag">🌹</span>
+            <span class="dest-name">Opatija</span>
+            <span class="dest-drive">110 km · 1h 50 ab ZG</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-start">
+          <th class="row-label">Budget-Eignung<span class="sub">&lt; CHF 5.000 · 4 Pers.</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Optimal</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Optimal</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Günstigste</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Teurer</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Teuerste</span></td>
+        </tr>
+        <tr class="price-row">
+          <th class="row-label">Geschätzter Gesamtpreis<span class="sub">7 Nächte · 4 Pers. · all-in</span></th>
+          <td class="cell hl"><strong>CHF 2.400–3.200</strong><span class="price-sub">Hotel 3★ ~140/N + Essen + Gas</span></td>
+          <td class="cell hl"><strong>CHF 2.200–3.000</strong><span class="price-sub">Apart. ~110/N + Essen + Gas</span></td>
+          <td class="cell"><strong>CHF 2.000–2.800</strong><span class="price-sub">Günstigste · Apart. ~90/N</span></td>
+          <td class="cell"><strong>CHF 2.200–3.000</strong><span class="price-sub">Apart. ~100/N · nahe ZG</span></td>
+          <td class="cell"><strong>CHF 2.800–3.800</strong><span class="price-sub">Hotel ~180/N · Saison-Premium</span></td>
+          <td class="cell"><strong>CHF 3.200–4.400</strong><span class="price-sub">Hotel 4★ ~220–280/N</span></td>
+        </tr>
+        <tr class="section-start">
+          <th class="row-label">Strand-Typ<span class="sub">Beschaffenheit August</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ Kiesel</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Kiesel + Sand</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Kiesel</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Kiesel</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Sand + Kiesel</span></td>
+          <td class="cell"><span class="cb cb-red">✗ Beton-Platform</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">Wasser f. Kleinkinder<span class="sub">Tiefe · Einstieg · Sicherheit</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Flach &amp; ruhig</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Flach · sicher</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Flach · gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Flach · ruhig</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Sanft abfall.</span></td>
+          <td class="cell"><span class="cb cb-red">✗ Steil · kein Sand</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">Familien­infrastruktur<span class="sub">Spielplatz · Restaurants · Kids</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Vollständig</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Vollständig</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Eingeschränkt</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Klein</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Adult-orientiert</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">August-Betrieb<span class="sub">Überfüllung Hauptsaison</span></th>
+          <td class="cell hl"><span class="cb cb-yellow">⚠ Belebt</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ Ruhiger</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Ruhig</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Ruhig</span></td>
+          <td class="cell"><span class="cb cb-red">✗ Sehr voll</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Belebt</span></td>
+        </tr>
+        <tr class="section-start">
+          <th class="row-label">Anreise ab Zürich<span class="sub">Eigenanreise mit Auto</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ ~6,5 Std.</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ ~6,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-green">✓ ~6,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-green">✓ ~6 Std.</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ ~7 Std.</span></td>
+          <td class="cell"><span class="cb cb-green">✓ ~6,5 Std.</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">Distanz Zagreb<span class="sub">Weiterfahrt Hochzeit 7. Aug</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ 1h 40</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ 1h 40</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 1h 35</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 1h 20</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ 2h 00</span></td>
+          <td class="cell"><span class="cb cb-green">✓ 1h 50</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">Unterkunft-Angebot<span class="sub">Verfügbarkeit August</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Gross</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ Gross</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Klein</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Klein</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Hotels</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">Wasser­aktivitäten<span class="sub">Schnorcheln · Paddeln · Spiel</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓ Gut</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Begrenzt</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Klares Wasser</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ Viel Angebot</span></td>
+          <td class="cell"><span class="cb cb-green">✓ Gut</span></td>
+        </tr>
+        <tr>
+          <th class="row-label">August-Wetter<span class="sub">Sonne · Regen · Wind</span></th>
+          <td class="cell hl"><span class="cb cb-green">✓✓ 30°C · trocken</span></td>
+          <td class="cell hl"><span class="cb cb-green">✓✓ 30°C · trocken</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 30°C · trocken</span></td>
+          <td class="cell"><span class="cb cb-yellow">⚠ Bora-Risiko</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 30°C · trocken</span></td>
+          <td class="cell"><span class="cb cb-green">✓✓ 28°C · trocken</span></td>
+        </tr>
+        <tr class="section-start">
+          <th class="row-label">Haupt-Risiko<span class="sub">Dealbreaker-Check</span></th>
+          <td class="cell risk-cell hl">Volle Strände im August. Früh reservieren — Hauptsaison.</td>
+          <td class="cell risk-cell hl">Kleiner Ort — weniger Ausweichmöglichkeiten bei Stornos.</td>
+          <td class="cell risk-cell">Kleines Angebot, kaum Alternativen bei kurzfristigen Änderungen.</td>
+          <td class="cell risk-cell">Bora-Wind möglich. Brückenstau Fr/Sa nach Krk.</td>
+          <td class="cell risk-cell">Extremster Tourismus-Stress Kroatiens im August. Strände überlaufen.</td>
+          <td class="cell risk-cell">Beton-Einstiege ungeeignet für Kleinkinder. Kein echter Strand.</td>
+        </tr>
+        <tr class="score-row">
+          <th class="row-label">Gesamtwertung</th>
+          <td class="hl"><span class="score-high">8.5</span></td>
+          <td class="hl"><span class="score-high">8.0</span></td>
+          <td><span class="score-high">7.5</span></td>
+          <td><span class="score-mid">7.0</span></td>
+          <td><span class="score-high">7.8</span></td>
+          <td><span class="score-low">5.5</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="summary-section">
+  <div class="summary-header">
+    <h2>Skeptic's Fazit</h2>
+    <span>Rangliste &amp; Buchungsempfehlung</span>
+  </div>
+  <div class="summary-body">
+    <div class="question-block">
+      <h3>Die Ausgangslage</h3>
+      <p>Der Urlaub ist logistisch klar definiert: 7 Nächte Strand ab 31. Juli, dann 1,5–2h Fahrt nach Zagreb zur Hochzeit am 8. August. Das Budget von CHF 5.000 ist bequem einzuhalten — alle Kvarner-Optionen kosten CHF 2.000–3.800 all-in. Entscheidend sind Strandqualität und Familientauglichkeit für Kinder von 5 und 7 Jahren. Opatija fällt sofort heraus: Beton-Plattformen sind ungeeignet. Krk-Baška hat zwar den einzigen echten Sandstrand der Region, ist aber im August das meistbesuchte Ziel ganz Kroatiens. Das beste Preis-Erlebnis-Verhältnis liegt im Crikvenica/Selce-Gebiet.</p>
+    </div>
+    <div class="choice-card c-crikvenica">
+      <div class="choice-tag">🥇 Klare Empfehlung</div>
+      <div class="choice-dest">Crikvenica oder Selce</div>
+      <div class="choice-desc">Beste Kombination aus Familientauglichkeit, Infrastruktur und Preis. Kieselstrände mit flachem Wassereinstieg, Lifeguards, Kinderspielzonen und breitem Restaurant-Angebot. Selce (3 km von Crikvenica) ist ruhiger mit etwas sandigen Strandabschnitten. Beide unter 1h 40 nach Zagreb. All-in: <strong>CHF 2.200–3.200</strong>.</div>
+    </div>
+    <div class="choice-card c-baska">
+      <div class="choice-tag">🥈 Beste Strand-Erfahrung</div>
+      <div class="choice-dest">Krk — Baška</div>
+      <div class="choice-desc">1,8 km langer Sand/Kiesel-Strand, sehr flach und perfekt für kleine Kinder — der einzige echte Sandstrand der Region. Lohnt sich wenn der Strand-Typ Priorität hat. Trade-off: 30 Min. längere Fahrt nach Zagreb, höhere Preise und der vollste Ort im kroatischen August. <strong>Sofort buchen</strong> — Kapazitäten erschöpfen sich als erstes. All-in: <strong>CHF 2.800–3.800</strong>.</div>
+    </div>
+    <div class="choice-card c-novivinodolski">
+      <div class="choice-tag">🥉 Ruhige Budget-Alternative</div>
+      <div class="choice-dest">Novi Vinodolski</div>
+      <div class="choice-desc">Charmantes kleines Städtchen, günstigste Option der Analyse (CHF 2.000–2.800), kürzeste Fahrt nach Zagreb. Richtig wenn Ruhe vor Masse Priorität hat. Schwachpunkt: kleines Unterkunft-Angebot — bei Stornierungen kaum Ausweichmöglichkeiten. Sehr frühzeitig buchen.</div>
+    </div>
+    <div class="choice-card c-opatija">
+      <div class="choice-tag">⛔ Nicht empfohlen</div>
+      <div class="choice-dest">Opatija — ausscheiden</div>
+      <div class="choice-desc">Elegante Promenade, schöne Architektur — aber Beton-Einstiege statt Strand. Für ein 5-jähriges Kind riskant und unangenehm. Teuerste Option der Analyse ohne den Gegenwert zu liefern. Für eine Familie mit Kleinkindern klar die falsche Wahl.</div>
+    </div>
+    <div class="question-block">
+      <h3>⚡ Buchungs-Hinweis</h3>
+      <p>August ist Hochsaison in Kroatien — eine der vollsten Wochen des Jahres. <strong>Sofort buchen</strong>. Crikvenica/Selce haben das breiteste Angebot und sind am ehesten noch verfügbar. Für Baška gilt: je länger gewartet wird, desto weniger familientaugliche Unterkünfte bleiben übrig. Buchungsplattformen: Booking.com oder Airbnb für Apartments (oft günstiger als Hotels). Wassertemperatur August: 24–26°C. Autobahnvignette Kroatien: nicht nötig, Maut wird an Mautstellen bezahlt.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Ferien Analyse</div>
+  <div class="footer-note">Kroatien · Kvarner Küste 2026 · Preise in CHF · Analyse April 2026</div>
+</footer>
+</body>
+</html>
