@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandy Herbst 2026 — Villa-Vergleich Norditalien</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --night: #0d0f14;
+  --deep: #13161e;
+  --card: #181c27;
+  --border: rgba(255,255,255,0.07);
+  --gold: #c8a96e;
+  --gold-dim: rgba(200,169,110,0.15);
+  --white: #f0ece4;
+  --muted: rgba(240,236,228,0.45);
+  --accent: #7eb8c9;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--night);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.5;
+}
+
+.ambient { position: fixed; border-radius: 50%; filter: blur(130px); pointer-events: none; z-index: 0; }
+.ambient-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%); top: -200px; right: -100px; animation: drift1 20s ease-in-out infinite; }
+.ambient-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(74,122,155,0.05) 0%, transparent 70%); bottom: 20%; left: -100px; animation: drift2 24s ease-in-out infinite; }
+@keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,50px)} }
+@keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(50px,-30px)} }
+
+/* ── NAV / BREADCRUMB ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; gap: 0;
+  background: rgba(13,15,20,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 52px;
+  height: 52px;
+}
+.nav-back {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; color: var(--gold); letter-spacing: 0.1em;
+  text-decoration: none; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+  transition: opacity 0.2s; padding-right: 20px;
+}
+.nav-back:hover { opacity: 0.7; }
+.nav-back::before { content: '←'; font-size: 15px; }
+.nav-sep { color: var(--border); font-size: 18px; margin-right: 20px; }
+.nav-current {
+  font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  position: relative; z-index: 1;
+  padding: 60px 52px 48px 80px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+}
+.header-left { max-width: 620px; }
+.page-eyebrow {
+  font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
+}
+.page-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); opacity: 0.6; }
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 60px); font-weight: 300;
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.page-title em { font-style: italic; color: var(--gold); }
+.page-meta {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
+  opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+}
+.page-meta span { display: flex; align-items: center; gap: 6px; }
+
+.header-score {
+  flex-shrink: 0; text-align: center;
+  opacity: 0; animation: fadeIn 0.9s 0.5s forwards;
+}
+.score-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.score-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px; font-weight: 300; line-height: 1;
+  color: var(--gold);
+}
+.score-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.12em; }
+
+/* ── POOL NOTE ── */
+.pool-note {
+  position: relative; z-index: 1;
+  margin: 0 80px 0;
+  padding: 14px 20px;
+  background: rgba(200,169,110,0.05);
+  border: 1px solid rgba(200,169,110,0.15);
+  border-top: none;
+  font-size: 11px; color: rgba(200,169,110,0.8); line-height: 1.6;
+}
+.pool-note strong { color: var(--gold); }
+
+/* ── TABLE WRAPPER ── */
+.table-section {
+  position: relative; z-index: 1;
+  padding: 48px 80px 60px;
+}
+.table-section-header {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 28px;
+}
+.ts-label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+.ts-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: var(--white); }
+
+.table-scroll {
+  overflow-x: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%; border-collapse: collapse;
+  min-width: 1000px;
+  background: var(--card);
+}
+
+/* group header */
+thead tr.group-header th {
+  background: #0a0c10;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+  padding: 10px 12px; text-align: center;
+  border-right: 2px solid rgba(255,255,255,0.05);
+}
+thead tr.group-header th.label-col {
+  color: rgba(255,255,255,0.2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+}
+
+/* destination header */
+thead tr.dest-header th {
+  background: #10131a;
+  padding: 12px 10px 10px;
+  border-bottom: 2px solid rgba(200,169,110,0.15);
+  border-right: 1px solid var(--border);
+  text-align: center; vertical-align: bottom;
+}
+thead tr.dest-header th.label-col {
+  background: #10131a; border-right: 2px solid rgba(255,255,255,0.1);
+}
+
+.dest-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 400; color: var(--white);
+  display: block; margin-bottom: 2px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a.dest-name:hover { color: var(--gold); }
+.dest-flag { font-size: 15px; display: block; margin-bottom: 3px; }
+.dest-region { font-size: 9px; color: var(--muted); display: block; }
+.dest-link {
+  display: inline-block;
+  font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  padding: 2px 6px; border: 1px solid rgba(126,184,201,0.25); border-radius: 2px;
+  margin-top: 4px; transition: all 0.2s;
+}
+.dest-link:hover { background: rgba(126,184,201,0.1); color: var(--white); }
+
+.top-pick-badge {
+  display: inline-block; background: var(--gold-dim); color: var(--gold);
+  font-size: 7px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 2px; margin-bottom: 3px;
+}
+.budget-badge {
+  display: inline-block; background: rgba(90,154,106,0.15); color: #7aefaa;
+  font-size: 7px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 2px; margin-bottom: 3px;
+}
+.premium-badge {
+  display: inline-block; background: rgba(184,92,56,0.15); color: #e8927a;
+  font-size: 7px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 2px; margin-bottom: 3px;
+}
+
+/* body rows */
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+tbody tr:hover { background: #1a1f2e; }
+tbody tr.section-start td, tbody tr.section-start th { border-top: 2px solid rgba(200,169,110,0.12); }
+
+td, th { padding: 9px 10px; vertical-align: middle; border-right: 1px solid var(--border); font-size: 11.5px; }
+
+th.row-label {
+  background: #10131a; border-right: 2px solid rgba(255,255,255,0.08);
+  font-weight: 500; font-size: 11px; color: var(--muted);
+  text-align: left; white-space: nowrap; min-width: 148px;
+}
+th.row-label .sub { font-weight: 300; color: rgba(240,236,228,0.25); font-size: 9.5px; display: block; margin-top: 1px; }
+td.cell { text-align: center; }
+td.hl { background: rgba(200,169,110,0.04); }
+th.hl { background: rgba(200,169,110,0.03); }
+
+/* score row */
+tr.score-row td {
+  background: #0a0c10; color: white;
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 22px; text-align: center; padding: 14px 8px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+tr.score-row th.row-label {
+  background: #0a0c10; color: var(--gold);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  border-right: 2px solid rgba(255,255,255,0.08);
+}
+.score-10  { color: #7aefaa; }
+.score-high{ color: var(--gold); }
+.score-mid { color: #7eb8c9; }
+.score-low { color: #e09090; }
+
+/* price row */
+tr.price-row td { font-weight: 500; font-size: 11px; color: #6ab87a; text-align: center; }
+tr.price-row th.row-label { color: #6ab87a; }
+.price-sub { font-size: 9px; color: var(--muted); display: block; font-weight: 300; }
+
+/* badges */
+.cb {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 3px; padding: 2px 7px;
+  font-size: 10px; font-weight: 500; white-space: nowrap; line-height: 1.5;
+}
+.cb-green  { background: rgba(90,154,106,0.18); color: #7aefaa; border: 1px solid rgba(90,154,106,0.25); }
+.cb-yellow { background: rgba(200,169,110,0.12); color: #d4a84e; border: 1px solid rgba(200,169,110,0.2); }
+.cb-red    { background: rgba(184,92,56,0.15);  color: #e8927a; border: 1px solid rgba(184,92,56,0.25); }
+.cb-blue   { background: rgba(74,122,155,0.15); color: #7eb8c9; border: 1px solid rgba(74,122,155,0.2); }
+.cb-gray   { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+
+td.risk-cell { text-align: left; font-size: 10px; line-height: 1.5; color: var(--muted); }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  background: var(--deep); border: 1px solid var(--border); border-radius: 4px;
+  font-size: 11px; color: var(--muted);
+}
+.legend-title { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(200,169,110,0.5); width: 100%; }
+.legend-item { display: flex; align-items: center; gap: 7px; }
+
+/* ── SUMMARY ── */
+.summary-section {
+  position: relative; z-index: 1;
+  margin: 0 80px 60px;
+  background: var(--deep);
+  border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+}
+.summary-header {
+  background: #0a0c10; padding: 18px 28px;
+  display: flex; align-items: baseline; gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.summary-header h2 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 22px; font-weight: 300; }
+.summary-header span { font-size: 10px; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; }
+
+.summary-body { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:700px){.summary-body{grid-template-columns:1fr}}
+
+.choice-card { border-radius: 4px; padding: 18px 20px; border-left: 3px solid var(--gold); background: rgba(255,255,255,0.02); }
+.c-virginia  { border-color: #c8a96e; }
+.c-castagna  { border-color: #7aefaa; }
+.c-gallia    { border-color: #7eb8c9; }
+.c-cleo      { border-color: #9b8fcf; }
+
+.choice-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.choice-dest {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 400; color: var(--white);
+  margin-bottom: 6px; text-decoration: none;
+  display: block; transition: color 0.2s;
+}
+.choice-dest:hover { color: var(--gold); }
+.choice-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+.question-block {
+  grid-column: 1 / -1; background: #0a0c10;
+  border-radius: 4px; padding: 20px 22px;
+  border: 1px solid var(--border);
+}
+.question-block h3 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 16px; margin-bottom: 8px; }
+.question-block p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  padding: 32px 80px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; }
+.footer-note { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; font-style: italic; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+@media(max-width:768px){
+  .page-header{flex-direction:column;padding:60px 24px 32px;gap:20px}
+  .table-section{padding:32px 16px 40px}
+  .pool-note,.summary-section{margin:0 16px 40px}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px}
+  nav{padding:0 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+
+<!-- BREADCRUMB NAV -->
+<nav>
+  <a href="/" class="nav-back">Ferien Analyse</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">Sandy Herbst 2026</span>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-left">
+    <div class="page-eyebrow">Villa-Vergleich · Norditalien · Herbst 2026</div>
+    <h1 class="page-title">Sandy Herbst<br><em>2026</em></h1>
+    <div class="page-meta">
+      <span>&#128197; 3.–10. Oktober 2026</span>
+      <span>&#128106; 3 Familien · 12 Personen</span>
+      <span>&#128176; ~&#8364;6.000 gesamt (~&#8364;2.000/Familie)</span>
+      <span>&#128664; ab Zürich ZRH</span>
+      <span>&#127968; 6 Villen · 6+ Zimmer · Beheizter Pool</span>
+    </div>
+  </div>
+  <div class="header-score">
+    <div class="score-label">Top-Wertung</div>
+    <div class="score-big">8.5</div>
+    <div class="score-sub">Villa Virginia &amp; La Castagna</div>
+  </div>
+</div>
+
+<!-- POOL NOTE -->
+<div class="pool-note">
+  &#127946; <strong>Pool-Hinweis Oktober:</strong>
+  Beheizte Pools ausserhalb der Hauptsaison (Mai–Sept.) kosten Aufpreis: ca. &#8364;50–100/Tag.
+  Für 7 Nächte ergibt das ~&#8364;350–700 extra — auf 3 Familien verteilt <strong>ca. &#8364;115–235 pro Familie.</strong>
+  Villa Virginia: Salzwasser-Heizpool bestätigt für Oktober. Bei allen anderen: vor Buchung explizit anfragen.
+</div>
+
+<!-- TABLE -->
+<div class="table-section">
+  <div class="table-section-header">
+    <span class="ts-label">Vergleich —</span>
+    <span class="ts-title">6 Villen · Norditalien · 13 Kriterien</span>
+  </div>
+
+  <div class="legend">
+    <div class="legend-title">Legende</div>
+    <div class="legend-item"><span class="cb cb-green">&#10003;&#10003;</span> Ausgezeichnet</div>
+    <div class="legend-item"><span class="cb cb-green">&#10003;</span> Gut</div>
+    <div class="legend-item"><span class="cb cb-yellow">&#9888;</span> Eingeschränkt</div>
+    <div class="legend-item"><span class="cb cb-red">&#10005;</span> Risiko</div>
+    <div class="legend-item"><span class="cb cb-blue">i</span> Hinweis</div>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr class="group-header">
+          <th class="label-col">Kriterien</th>
+          <th colspan="2" style="border-right:2px solid rgba(255,255,255,0.08);">&#127867; Lago Maggiore</th>
+          <th colspan="1" style="border-right:2px solid rgba(255,255,255,0.08);">&#127774; Piemont</th>
+          <th colspan="1" style="border-right:2px solid rgba(255,255,255,0.08);">&#127752; Lago di Garda</th>
+          <th colspan="2">&#9975;&#65039; Lago di Como</th>
+        </tr>
+        <tr class="dest-header">
+          <th class="label-col"></th>
+
+          <!-- Villa Virginia -->
+          <th class="hl">
+            <span class="top-pick-badge">Top-Wahl &#127945;</span>
+            <span class="dest-flag">&#127958;&#65039;</span>
+            <a href="https://www.northitaly.villas/en/lake-maggiore-rentals/piedmont/stresa/20-villa-virginia/" target="_blank" class="dest-name">Villa Virginia</a>
+            <span class="dest-region">Stresa · 2 Std.</span>
+            <a href="https://www.northitaly.villas/en/lake-maggiore-rentals/piedmont/stresa/20-villa-virginia/" target="_blank" class="dest-link">Buchen &#8599;</a>
+          </th>
+
+          <!-- Villa Fruttuosa -->
+          <th>
+            <span class="dest-flag">&#127963;&#65039;</span>
+            <a href="https://www.hiddenitaly.com/villas/lake-como-lake-maggiore-lake-garda/villa-fruttuosa/" target="_blank" class="dest-name">Villa Fruttuosa</a>
+            <span class="dest-region">Stresa · 2 Std.</span>
+            <a href="https://www.hiddenitaly.com/villas/lake-como-lake-maggiore-lake-garda/villa-fruttuosa/" target="_blank" class="dest-link">Buchen &#8599;</a>
+          </th>
+
+          <!-- Villa la Castagna -->
+          <th class="hl" style="border-right:2px solid rgba(255,255,255,0.08)">
+            <span class="budget-badge">Bestes Preis-Leis. &#129297;</span>
+            <span class="dest-flag">&#127807;</span>
+            <a href="https://www.casainitalia.com/villa/Italy/Piedmont/Villa-la-Castagna/c1427b3b-ba60-b937-3ab7-e30efaad8571" target="_blank" class="dest-name">Villa la Castagna</a>
+            <span class="dest-region">Langhe · 2,5 Std.</span>
+            <a href="https://www.casainitalia.com/villa/Italy/Piedmont/Villa-la-Castagna/c1427b3b-ba60-b937-3ab7-e30efaad8571" target="_blank" class="dest-link">Buchen &#8599;</a>
+          </th>
+
+          <!-- Villa Gallia -->
+          <th style="border-right:2px solid rgba(255,255,255,0.08)">
+            <span class="premium-badge">Premium &#9733;</span>
+            <span class="dest-flag">&#127754;</span>
+            <a href="https://www.homeinitaly.com/luxury-villa-for-rent-in-italy-lake-garda-verona/villa-gallia_1086" target="_blank" class="dest-name">Villa Gallia</a>
+            <span class="dest-region">Garda · 2,5 Std.</span>
+            <a href="https://www.homeinitaly.com/luxury-villa-for-rent-in-italy-lake-garda-verona/villa-gallia_1086" target="_blank" class="dest-link">Buchen &#8599;</a>
+          </th>
+
+          <!-- Villa Cleo -->
+          <th>
+            <span class="dest-flag">&#9975;&#65039;</span>
+            <a href="https://www.villavacations.com/villa-cleo-1" target="_blank" class="dest-name">Villa Cleo</a>
+            <span class="dest-region">Lenno, Como · 2 Std.</span>
+            <a href="https://www.villavacations.com/villa-cleo-1" target="_blank" class="dest-link">Buchen &#8599;</a>
+          </th>
+
+          <!-- Villa Lario -->
+          <th>
+            <span class="dest-flag">&#9973;&#65039;</span>
+            <a href="https://www.essenzaescapes.com/villas-chalets/villa-lario-lake-como" target="_blank" class="dest-name">Villa Lario</a>
+            <span class="dest-region">Lago di Como · 2 Std.</span>
+            <a href="https://www.essenzaescapes.com/villas-chalets/villa-lario-lake-como" target="_blank" class="dest-link">Buchen &#8599;</a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- BUDGET ROW -->
+        <tr class="section-start">
+          <th class="row-label">Budget-Eignung<span class="sub">~&#8364;2.000/Familie</span></th>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Im Budget</span></td>
+          <td class="cell"><span class="cb cb-yellow">&#9888; Knapp</span></td>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Unter Budget</span></td>
+          <td class="cell"><span class="cb cb-red">&#10005; 3× Budget</span></td>
+          <td class="cell"><span class="cb cb-yellow">&#9888; Knapp</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; Im Budget</span></td>
+        </tr>
+
+        <!-- PRICE ROW -->
+        <tr class="price-row">
+          <th class="row-label">Geschätzter Preis<span class="sub">7 Nächte, 3 Familien</span></th>
+          <td class="cell hl"><strong>&#8364;5.500–8.000</strong></td>
+          <td class="cell"><strong>&#8364;6.000–10.000</strong></td>
+          <td class="cell hl"><strong>&#8364;3.500–5.500</strong></td>
+          <td class="cell"><strong>&#8364;18.500–32.100</strong></td>
+          <td class="cell"><strong>&#8364;6.300–9.000</strong></td>
+          <td class="cell"><strong>&#8364;5.000–8.000</strong></td>
+        </tr>
+
+        <!-- PER FAMILY -->
+        <tr>
+          <th class="row-label">Pro Familie<span class="sub">Schätzwert Okt.</span></th>
+          <td class="cell hl"><strong style="color:#7aefaa">~&#8364;1.850</strong></td>
+          <td class="cell"><strong style="color:#d4a84e">~&#8364;2.000–3.300</strong></td>
+          <td class="cell hl"><strong style="color:#7aefaa">~&#8364;1.170</strong></td>
+          <td class="cell"><strong style="color:#e8927a">~&#8364;6.170+</strong></td>
+          <td class="cell"><strong style="color:#d4a84e">~&#8364;2.100+</strong></td>
+          <td class="cell"><strong style="color:#7aefaa">~&#8364;1.670</strong></td>
+        </tr>
+
+        <!-- HEATED POOL OCT -->
+        <tr>
+          <th class="row-label">Beheizter Pool Okt.<span class="sub">Verfügbarkeit</span></th>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Bestätigt</span></td>
+          <td class="cell"><span class="cb cb-yellow">&#9888; Anfragen</span></td>
+          <td class="cell hl"><span class="cb cb-yellow">&#9888; Solar – prüfen</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; +&#8364;50/Tag</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; +Aufpreis</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; +Aufpreis</span></td>
+        </tr>
+
+        <!-- ROOMS / CAPACITY -->
+        <tr>
+          <th class="row-label">Zimmer / Gäste<span class="sub">Kapazität</span></th>
+          <td class="cell hl"><span class="cb cb-green">8 Zi. · 18 Pers.</span></td>
+          <td class="cell"><span class="cb cb-green">7 Zi. · 14 Pers.</span></td>
+          <td class="cell hl"><span class="cb cb-blue">6 Zi. · 12 Pers.</span></td>
+          <td class="cell"><span class="cb cb-green">8 Zi. · 16 Pers.</span></td>
+          <td class="cell"><span class="cb cb-blue">6 Zi. · 12 Pers.</span></td>
+          <td class="cell"><span class="cb cb-blue">6 Zi. · 12 Pers.</span></td>
+        </tr>
+
+        <!-- KIDS ACTIVITIES -->
+        <tr class="section-start">
+          <th class="row-label">Kinder (3–11 J.)<span class="sub">Aktivitäten Region</span></th>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Sehr gut</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Sehr gut</span></td>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Trüffelsuche!</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Gardaland!</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; Gut</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; Gut</span></td>
+        </tr>
+
+        <!-- ADULT ACTIVITIES -->
+        <tr>
+          <th class="row-label">Erwachsene<span class="sub">Wein, Sport, Kultur</span></th>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; See + Wein</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Park + Inseln</span></td>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Barolo + Trüffel</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Amarone + Golf</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; See + Kultur</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Boot + Wandern</span></td>
+        </tr>
+
+        <!-- WEATHER -->
+        <tr>
+          <th class="row-label">Oktober-Wetter<span class="sub">Durchschnitt</span></th>
+          <td class="cell hl"><span class="cb cb-green">&#10003; ~14–17°C</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; ~14–17°C</span></td>
+          <td class="cell hl"><span class="cb cb-blue">&#127810; Herbstlich 10–15°C</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; ~15–18°C</span></td>
+          <td class="cell"><span class="cb cb-blue">&#127810; Mild 13–17°C</span></td>
+          <td class="cell"><span class="cb cb-blue">&#127810; Mild 13–17°C</span></td>
+        </tr>
+
+        <!-- DRIVE FROM ZRH -->
+        <tr>
+          <th class="row-label">Anreise ab ZRH<span class="sub">Auto-Fahrzeit</span></th>
+          <td class="cell hl"><span class="cb cb-green">Auto 2 Std.</span></td>
+          <td class="cell"><span class="cb cb-green">Auto 2 Std.</span></td>
+          <td class="cell hl"><span class="cb cb-yellow">Auto 2,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-yellow">Auto 2,5 Std.</span></td>
+          <td class="cell"><span class="cb cb-green">Auto 2 Std.</span></td>
+          <td class="cell"><span class="cb cb-green">Auto 2 Std.</span></td>
+        </tr>
+
+        <!-- AMENITIES -->
+        <tr>
+          <th class="row-label">Extras / Amenities<span class="sub">Besondere Features</span></th>
+          <td class="cell hl"><span class="cb cb-green">Tennis + Sauna</span></td>
+          <td class="cell"><span class="cb cb-blue">Hist. Park 1,2 ha</span></td>
+          <td class="cell hl"><span class="cb cb-green">BBQ + 5,3 ha Land</span></td>
+          <td class="cell"><span class="cb cb-blue">Täglicher Reinigung</span></td>
+          <td class="cell"><span class="cb cb-green">Gym + Spieltisch</span></td>
+          <td class="cell"><span class="cb cb-blue">Privatsteg + Boot</span></td>
+        </tr>
+
+        <!-- LOCATION / FLAIR -->
+        <tr>
+          <th class="row-label">Lage &amp; Flair<span class="sub">Seelage / Aussicht</span></th>
+          <td class="cell hl"><span class="cb cb-green">&#10003;&#10003; Stresa, 400m See</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Hist. Villa 1912</span></td>
+          <td class="cell hl"><span class="cb cb-blue">i Hügel-Panorama</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Seeblick Garda</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Seeblick Como</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003;&#10003; Direkt am See</span></td>
+        </tr>
+
+        <!-- BOOKING RISK -->
+        <tr>
+          <th class="row-label">Buchungsrisiko<span class="sub">Verfügbarkeit Okt.</span></th>
+          <td class="cell hl"><span class="cb cb-yellow">&#9888; Früh buchen</span></td>
+          <td class="cell"><span class="cb cb-yellow">&#9888; Preis anfragen</span></td>
+          <td class="cell hl"><span class="cb cb-green">&#10003; Nebensaison</span></td>
+          <td class="cell"><span class="cb cb-yellow">&#9888; Mindestbuchung</span></td>
+          <td class="cell"><span class="cb cb-green">&#10003; Gut verfügbar</span></td>
+          <td class="cell"><span class="cb cb-yellow">&#9888; Min. 7 Nächte</span></td>
+        </tr>
+
+        <!-- DEAL BREAKER -->
+        <tr>
+          <th class="row-label">Haupt-Risiko<span class="sub">Deal-Breaker</span></th>
+          <td class="cell risk-cell hl">Kein direkter Seeblick; Beliebte Lage → sofort buchen!</td>
+          <td class="cell risk-cell">Pool-Heizung Oktober unklar; oberes Preissegment</td>
+          <td class="cell risk-cell hl">Solar-Pool: Heizung im Okt. ungewiss; kein Seelage</td>
+          <td class="cell risk-cell">Weit über Budget (3× Limit); Zusatzkosten Reinigung+Pool</td>
+          <td class="cell risk-cell">Oktober-Rate evtl. über CHF 6k Limit; Pool-Aufpreis</td>
+          <td class="cell risk-cell">Wenige Online-Infos — direkt bei Essenza anfragen</td>
+        </tr>
+
+        <!-- SCORE ROW -->
+        <tr class="score-row">
+          <th class="row-label">Gesamtwertung<span style="color:rgba(255,255,255,0.25);font-size:9px;font-weight:300;display:block;letter-spacing:0.05em;">Punkte von 10</span></th>
+          <td class="hl"><span class="score-10">8.5</span></td>
+          <td><span class="score-high">7.5</span></td>
+          <td class="hl"><span class="score-10">8.5</span></td>
+          <td><span class="score-mid">6.5</span></td>
+          <td><span class="score-high">8.0</span></td>
+          <td><span class="score-high">8.0</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:10px;color:var(--muted);font-style:italic;line-height:1.6;margin-top:12px">
+    Alle Preisangaben: Schätzwerte Oktober-Nebensaison (30–50% unter Hochsommer). &nbsp;|&nbsp;
+    Pool-Aufpreis Oktober: ~&#8364;50–100/Tag zusätzlich. &nbsp;|&nbsp;
+    Preise für 3 Familien (12 Pers.), 7 Nächte, Stand April 2026.
+  </p>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-section">
+  <div class="summary-header">
+    <h2>Fazit &amp; Empfehlungen</h2>
+    <span>Die entscheidende Frage für Sandy Herbst</span>
+  </div>
+  <div class="summary-body">
+
+    <div class="question-block">
+      <h3>Seelage &amp; Infrastruktur oder Natur &amp; Herbst-Flair?</h3>
+      <p>Sechs Villen, jede mit einer anderen Stärke. <strong>Villa Virginia</strong> punktet mit bestätigtem Heizpool, Tennis &amp; Sauna und allem inklusive — perfekt wenn Komfort erste Priorität hat. <strong>Villa la Castagna</strong> bietet das günstigste Preis-Leistungs-Verhältnis, 5,3 Hektar Privatland — und Oktober ist Trüffel-Saison in den Langhe. Kurzes Gruppen-Voting empfohlen: <em>See vs. Hügel?</em></p>
+    </div>
+
+    <div class="choice-card c-virginia">
+      <div class="choice-tag">&#127941; Top-Wahl — Beste Amenities &amp; Budget-Sicherheit</div>
+      <a href="https://www.northitaly.villas/en/lake-maggiore-rentals/piedmont/stresa/20-villa-virginia/" target="_blank" class="choice-dest">Villa Virginia — Lago Maggiore</a>
+      <div class="choice-desc">~&#8364;5.500–8.000/Woche · 8 Schlafzimmer · 18 Pers. · Salzwasser-Heizpool bestätigt &#10003; · Tennis + Sauna + Pétanque · 400m nach Stresa · Alles inklusive (Wäsche, Reinigung). <strong>&#8594; Buchen: northitaly.villas</strong></div>
+    </div>
+
+    <div class="choice-card c-castagna">
+      <div class="choice-tag">&#127811; Bestes Preis-Leistungs-Verhältnis — Herbst-Flair Piemont</div>
+      <a href="https://www.casainitalia.com/villa/Italy/Piedmont/Villa-la-Castagna/c1427b3b-ba60-b937-3ab7-e30efaad8571" target="_blank" class="choice-dest">Villa la Castagna — Langhe, Piemont</a>
+      <div class="choice-desc">~&#8364;3.500–5.500/Woche · 6 Schlafzimmer · 12 Pers. · Infinity-Pool (6×12m) · 5,3 Hektar Privatland · Holzbackofen + BBQ-Terrasse. Oktober = Weisstrüffel-Saison! Alba Trüffelmesse ab 10. Okt. <strong>&#8594; Buchen: casainitalia.com</strong></div>
+    </div>
+
+    <div class="choice-card c-cleo">
+      <div class="choice-tag">&#9975;&#65039; Lake Como — Beste Innen-Ausstattung</div>
+      <a href="https://www.villavacations.com/villa-cleo-1" target="_blank" class="choice-dest">Villa Cleo — Lenno, Lago di Como</a>
+      <div class="choice-desc">~&#8364;6.300–9.000/Woche · 6 Zimmer · 12 Pers. · Heizpool + Wellness-Whirlpool · Fitnessraum, Spieltisch, Kamin, Fahrstuhl. Oktober-Rate direkt anfragen — evtl. im Budget. <strong>&#8594; Buchen: villavacations.com</strong></div>
+    </div>
+
+    <div class="choice-card c-gallia">
+      <div class="choice-tag">&#9733; Premium — Für entspanntes Budget</div>
+      <a href="https://www.homeinitaly.com/luxury-villa-for-rent-in-italy-lake-garda-verona/villa-gallia_1086" target="_blank" class="choice-dest">Villa Gallia — Lago di Garda</a>
+      <div class="choice-desc">&#8364;18.500–32.100/Woche · 17. Jh. Herrschaftshaus · 8 Zimmer · 16 Pers. · Tägliche Reinigung inklusive. <strong>Deutlich über Budget</strong> — nur wenn alle 3 Familien budget-flexibel sind. Gardaland (Europas top Themenpark) direkt nebenan. <strong>&#8594; Buchen: homeinitaly.com</strong></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">Ferien Analyse</div>
+  <div class="footer-note">Schätzpreise Okt. 2026 · NorthItaly.Villas · CasaInItalia · HomeInItaly · VillaVacations · HiddenItaly · EssenzaEscapes · Stand April 2026</div>
+</footer>
+
+</body>
+</html>
